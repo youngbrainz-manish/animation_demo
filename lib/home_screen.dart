@@ -1,3 +1,4 @@
+import 'package:animation_demo/grid_view/grid_view_screen.dart';
 import 'package:animation_demo/text_animation/custom_text_animation.dart';
 import 'package:animation_demo/text_animation/text_animation_screen.dart';
 import 'package:animation_demo/widget_animation/widget_animation_screen.dart';
@@ -15,6 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
     {"id": 1, "name": "Text Animation Screen", "icon": Icon(Icons.text_rotation_angleup), "tag": "ani_text"},
     {"id": 2, "name": "Custom Text Animation Screen", "icon": Icon(Icons.animation), "tag": "custtext_ani"},
     {"id": 3, "name": "Widget Animation Screen", "icon": Icon(Icons.widgets_rounded), "tag": "ani_wid"},
+    {"id": 4, "name": "GridView Screen", "icon": Icon(Icons.grid_3x3_sharp), "tag": "grid_icon"},
   ];
 
   @override
@@ -58,19 +60,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> handleNavigation({required Map<String, dynamic> data}) async {
-    // if (data['id'] == 1) {
-    //   await Navigator.of(
-    //     context,
-    //   ).push(MaterialPageRoute(builder: (context) => TextAnimationScreen(heroTag: data['tag'])));
-    // } else if (data['id'] == 2) {
-    //   await Navigator.of(
-    //     context,
-    //   ).push(MaterialPageRoute(builder: (context) => WidgetAnimationScreen(heroTag: data['tag'])));
-    // }
     final Map<int, Widget> screenMap = {
       1: TextAnimationScreen(heroTag: data['tag']),
       2: CustomTextAnimation(heroTag: data['tag']),
       3: WidgetAnimationScreen(heroTag: data['tag']),
+      4: GridViewScreen(heroTag: data['tag']),
     };
 
     final screen = screenMap[data['id']];

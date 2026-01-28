@@ -48,14 +48,18 @@ class _WidgetAnimationScreenState extends State<WidgetAnimationScreen> with Sing
                   children: [Text("Hello"), Text("World"), Text("Goodbye")],
                 ),
               ),
-              Center(
-                child: Container(
-                  margin: const EdgeInsets.symmetric(vertical: 10),
-                  height: animation.value,
-                  width: animation.value,
-                  child: const FlutterLogo(),
-                ),
-              ),
+              Animate()
+                  .custom(duration: 900.milliseconds, begin: 900, end: 0, builder: (_, value, __) => FlutterLogo())
+                  .fadeOut(),
+              Animate().toggle(duration: 2.seconds, builder: (_, value, __) => Text(value ? "Before" : "After")),
+              // Center(
+              //   child: Container(
+              //     margin: const EdgeInsets.symmetric(vertical: 10),
+              //     height: animation.value,
+              //     width: animation.value,
+              //     child: const FlutterLogo(),
+              //   ),
+              // ),
             ],
           ),
         ),
